@@ -48,6 +48,9 @@
 <div id="result"></div>
 
 <script>
+// ⚠️ TEST PURPOSE ONLY: Add your HuggingFace API token here
+const HUGGINGFACE_API_KEY = "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";
+
 async function generateImage() {
     const prompt = document.getElementById("prompt").value;
     const resultDiv = document.getElementById("result");
@@ -57,7 +60,10 @@ async function generateImage() {
         "https://api-inference.huggingface.co/models/prompthero/openjourney",
         {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Authorization": `Bearer ${HUGGINGFACE_API_KEY}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({ inputs: prompt }),
         }
     );
